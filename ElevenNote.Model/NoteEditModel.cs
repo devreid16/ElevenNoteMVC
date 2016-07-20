@@ -6,18 +6,19 @@ using System.Threading.Tasks;
 
 namespace ElevenNote.Model
 {
-    class NoteCreateModel
+    class NoteEditModel
     {
+        public int NoteId { get; set; }
 
         public string Title { get; set; }
 
         public string Content { get; set; }
 
+        //interpolation to get note and title
         public override string ToString()
         {
-            return $"[New] {Title}";
+            return $"[{NoteId}] {Title}";
         }
-
 
     }
 }

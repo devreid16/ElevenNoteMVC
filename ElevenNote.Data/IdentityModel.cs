@@ -32,6 +32,10 @@ namespace ElevenNote.Data
             return new ElevenNoteDBContext();
         }
 
+        //this gives a collection of all notes in database and db connection string
+        public DbSet<NoteEntity> Notes { get; set; }
+
+
         //tries as part of the entity framework to create and maintain the database
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

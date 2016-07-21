@@ -35,8 +35,13 @@ namespace ElevenNote.web.Controllers
             return View(notes);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]   //Applies to code below
+        [ValidateAntiForgeryToken]       
 
         public ActionResult Create(NoteCreateModel model)
         {
@@ -48,7 +53,16 @@ namespace ElevenNote.web.Controllers
                 return View(model);
             }
 
+            TempData["SaveResult"] = "Your note was created";
+            
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Details(int id)
+        {
+            var note = _svc.Value.GetNoteById(id);
+
+            return View(note);
         }
     }
 }

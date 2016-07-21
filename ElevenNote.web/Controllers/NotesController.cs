@@ -64,5 +64,60 @@ namespace ElevenNote.web.Controllers
 
             return View(note);
         }
+
+        public ActionResult Edit(int id)
+        {
+            var note = _svc.Value.GetNoteById(id);
+            var model =
+                new NoteEditModel
+                {
+                    NoteId = note.NoteId,
+                    Title = note.Title,
+                    Content = note.Content
+                };
+
+            return View(model);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public ActionResult Edit(NoteEditModel model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if(!_svc.Value.UpdateNote(model))
+            {
+                ModelState.AddModelError("", "Unable to update note");
+                return View(model);                    
+            }
+
+            TempData["SavedResult"] = "Your note was saved";
+
+            return RedirectToAction("Index");
+        }
+
+        [ActionName("Delete")]
+
+        public ActionResult DeleteGet(int id)
+        {
+            var detail = _svc.Value.GetNoteById(id);
+
+            return View(detail);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+
+        public ActionResult DeletePost(int id)
+        {
+            _svc.Value.DeleteNote(id);
+
+            TempData["SavedResult"] = "Your note was deleted";
+
+            return RedirectToAction("Index");
+        }
     }
 }

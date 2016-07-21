@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace ElevenNote.Data
     //table is attribute in schema name space
     [Table("Note")]
 
-    //These properties defines our note table
+    //These Entities defines our note table
     public class NoteEntity
     {
         [Key]
@@ -26,6 +27,9 @@ namespace ElevenNote.Data
 
         [Required]
         public string Content { get; set; }
+
+        [DefaultValue(false)]
+        public bool IsStarred { get; set; }
 
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }

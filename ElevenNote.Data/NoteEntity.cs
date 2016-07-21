@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ElevenNote.Data
 {
-    //table is attribute in schema namespace
+    //table is attribute in schema name space
     [Table("Note")]
 
     //These properties defines our note table

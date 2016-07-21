@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ElevenNote.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,9 @@ namespace ElevenNote.web.Controllers
         // GET: Notes
         public ActionResult Index()
         {
-            return View();
+            var notes = new NoteService().GetNotes();
+
+            return View(notes);
         }
     }
 }

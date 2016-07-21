@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ElevenNote.Model
 {
-    class NoteEditModel
+    public class NoteEditModel
     {
         public int NoteId { get; set; }
 

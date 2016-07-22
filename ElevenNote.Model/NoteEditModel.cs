@@ -14,6 +14,8 @@ namespace ElevenNote.Model
 
         public string Content { get; set; }
 
+        public bool IsStarred { get; set; }
+
         //interpolation to get note and title
         public override string ToString()
         {

@@ -12,7 +12,7 @@ namespace ElevenNote.Data
     //table is attribute in schema name space
     [Table("Note")]
 
-    //These Entities defines our note table
+    //These Entities define our note table
     public class NoteEntity
     {
         [Key]

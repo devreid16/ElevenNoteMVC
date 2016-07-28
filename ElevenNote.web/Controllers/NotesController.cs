@@ -17,7 +17,7 @@ namespace ElevenNote.web.Controllers
 
         public NotesController()
         {
-            //makes note service available to other projects
+            //makes note service available to other projects *check NoteServices folder
             _svc =
                  new Lazy<NoteService>(
                      () =>

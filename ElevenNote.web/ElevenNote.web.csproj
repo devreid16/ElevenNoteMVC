@@ -257,6 +257,7 @@
     <Content Include="Views\Notes\Edit.cshtml" />
     <Content Include="Views\Notes\Delete.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Starred.cshtml" />
+    <Content Include="Views\Home\Info.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

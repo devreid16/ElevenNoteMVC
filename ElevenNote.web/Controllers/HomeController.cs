@@ -20,6 +20,13 @@ namespace ElevenNote.web.Controllers
             return View();
         }
 
+        public ActionResult Info()
+        {
+            ViewBag.Message = "EveryNote Information page.";
+
+            return View();
+        }
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

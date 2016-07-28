@@ -27,6 +27,7 @@
                         <li>@Html.ActionLink("Notes", "Index", "Notes")</li>
                     }                   
                     <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Info", "Info", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
@@ -37,7 +38,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - AR Eleven Note</p>
+            <p>&copy; @DateTime.Now.Year - EveryNote</p>
         </footer>
     </div>
 

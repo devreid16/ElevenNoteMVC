@@ -12,7 +12,7 @@ namespace ElevenNote.Model
         [Required]
         [MinLength(2, ErrorMessage = "Please Enter at least 2 Characters")]
         [MaxLength(128)]
-        
+
         public string Title { get; set; }
 
         public string Content { get; set; }
@@ -21,7 +21,6 @@ namespace ElevenNote.Model
         {
             return $"[New] {Title}";
         }
-
 
     }
 }

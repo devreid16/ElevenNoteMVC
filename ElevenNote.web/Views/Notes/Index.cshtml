@@ -5,13 +5,19 @@
 }
 
 <h2>Index</h2>
-<h1>Hello</h1>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 
-@if(TempData.ContainsKey("SaveResult"))
+<form asp-controller="NotesController" asp-action="Index">
+    <p>
+        Title: <input type="text" name="SearchString">
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+@if (TempData.ContainsKey("SaveResult"))
 {
     <div class="alert alert-success fade in" role="alert">
         <button type="button" class="close" data-dismiss="alert">
@@ -28,6 +34,7 @@
         <th>
             @Html.DisplayNameFor(model => model.NoteId)
         </th>
+        
         <th>
             @Html.DisplayNameFor(model => model.Title)
         </th>
@@ -42,32 +49,34 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NoteId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoteId)
+            </td>
 
-        <td>
-            @Html.DisplayFor(modeItem => item.IsStarred, new { Id = item.NoteId })
-        </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedUtc)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.NoteId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.NoteId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.NoteId })
-        </td>
-    </tr>
-}
+            <td>
+                @Html.DisplayFor(modeItem => item.IsStarred, new { Id = item.NoteId })
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedUtc)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.NoteId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.NoteId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.NoteId })
+            </td>
+        </tr>
+    }
 
 </table>
-    
+
 @section scripts {
     <script language="javascript" type="text/javascript">
         $(document).ready(function () {
@@ -93,4 +102,4 @@
                 });
         });
     </script>
-    }
+}

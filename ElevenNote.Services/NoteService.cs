@@ -52,7 +52,7 @@ namespace ElevenNote.Services
                 new NoteEntity
                 {
                     OwnerId = _userId,
-                    Title = model.Content,
+                    Title = model.Title,
                     Content = model.Content,
                     CreatedUtc = DateTimeOffset.UtcNow
                 };

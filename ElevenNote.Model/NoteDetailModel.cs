@@ -25,9 +25,8 @@ namespace ElevenNote.Model
         //interpolation to get note and title
         public override string ToString()
         {
-             return $"[{NoteId}] {Title}";
+            return $"[{NoteId}] {Title}";
         }
 
-
-}
+    }
 }

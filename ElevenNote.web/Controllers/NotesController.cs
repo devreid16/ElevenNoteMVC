@@ -11,26 +11,32 @@ namespace ElevenNote.web.Controllers
 {
     [Authorize]
 
-    public class NotesController : Controller        
+    public class NotesController : Controller
     {
         private readonly Lazy<NoteService> _svc;
-        
+
         public NotesController()
         {
-            //makes note service available to other projects
+            //makes note service available to other projects *check NoteServices folder
             _svc =
                  new Lazy<NoteService>(
                      () =>
                      {
-                        var userId = Guid.Parse(User.Identity.GetUserId());
+                         var userId = Guid.Parse(User.Identity.GetUserId());
                          return new NoteService(userId);
                      });
 
         }
         // GET: Notes
-        public ActionResult Index()
-        {            
+        public ActionResult Index(string searchString)
+        {
             var notes = _svc.Value.GetNotes();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                notes = notes.Where(s => s.Title.Contains(searchString));
+            }
+
 
             return View(notes);
         }
@@ -41,20 +47,20 @@ namespace ElevenNote.web.Controllers
         }
 
         [HttpPost]   //Applies to code below
-        [ValidateAntiForgeryToken]       
+        [ValidateAntiForgeryToken]
 
         public ActionResult Create(NoteCreateModel model)
         {
             if (!ModelState.IsValid) return View(model);
 
-            if(!_svc.Value.CreateNote(model))
+            if (!_svc.Value.CreateNote(model))
             {
                 ModelState.AddModelError("", "Unable to create note");
                 return View(model);
             }
 
             TempData["SaveResult"] = "Your note was created";
-            
+
             return RedirectToAction("Index");
         }
 
@@ -88,10 +94,10 @@ namespace ElevenNote.web.Controllers
         {
             if (!ModelState.IsValid) return View(model);
 
-            if(!_svc.Value.UpdateNote(model))
+            if (!_svc.Value.UpdateNote(model))
             {
                 ModelState.AddModelError("", "Unable to update note");
-                return View(model);                    
+                return View(model);
             }
 
             TempData["SavedResult"] = "Your note was saved";

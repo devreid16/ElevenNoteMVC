@@ -38,7 +38,7 @@ namespace ElevenNote.web.Controllers
             }
 
 
-            return View(notes);
+            return View(notes.ToList());
         }
 
         public ActionResult Create()

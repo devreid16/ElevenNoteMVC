@@ -15,6 +15,7 @@
         Title: <input type="text" name="SearchString">
         <input type="submit" value="Filter" />
     </p>
+   
 </form>
 
 @if (TempData.ContainsKey("SaveResult"))
@@ -74,8 +75,11 @@
             </td>
         </tr>
     }
-
 </table>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
 
 @section scripts {
     <script language="javascript" type="text/javascript">

@@ -15,6 +15,8 @@ namespace ElevenNote.Model
 
         public string Title { get; set; }
 
+        [Required]
+        [MaxLength(8000)]
         public string Content { get; set; }
 
         public override string ToString()
